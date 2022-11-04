@@ -20,14 +20,22 @@ app.use(function (err, req, res, next) {
   });
 });
 
+app.get("/", (req, res) => {
+  res.status(200).json({
+    Success: "True",
+    message: "This is a food ordering API, You api end points are follwing",
+    data: {
+      signup: "https://localhost:5000/signup",
+      login: "https://localhost:5000/login",
+      get_menu: "https://localhost:5000/api/v1/get-all-foods",
+      check_your_cart: "https://localhost:5000/apo/v1/userId/cart",
+      order: "https://localhost:5000/api/v1/order-now",
+    },
+  });
+});
+
 app.listen(5000, async () => {
   console.log("server started successfully");
   await connect();
   console.log("Database connected successfully!");
-
-  // const user = await User.create({
-  //   email: "user1@email.com",
-  //   password: "ashu1234",
-  //   username: "ashutosh",
-  // });
 });
