@@ -2,13 +2,21 @@ const express = require("express"); // this package returns a function
 require("dotenv").config();
 const { connect } = require("./src/config/database");
 const app = express(); //executig function returned by expressjs
+const bodyParser = require("body-parser");
+const passport = require("passport");
 const apiRouter = require("./src/routes/index");
 const { User } = require("./src/models/userModel");
+const authRouter = require("./src/routes/authRoutes");
+require("./src/utils/auth");
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use("/", authRouter);
 app.use("/api", apiRouter);
 
-app.get("/", (req, res) => {
-  res.status(200).json({
-    message: "hii there",
+app.use(function (err, req, res, next) {
+  res.status(err.status || 500);
+  res.json({
+    success: false,
+    error: err,
   });
 });
 

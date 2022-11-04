@@ -13,11 +13,6 @@ const userSchema = new mongoose.Schema(
       unique: true,
       required: true,
     },
-    username: {
-      type: String,
-      unique: true,
-      required: true,
-    },
   },
   {
     timestamps: true,
