@@ -4,7 +4,8 @@
   "description": "This is a food booking api , you can add and order food",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "nodemon index.js",
+    "dev": "nodemon index.js"
   },
   "author": "Ashutosh Maurya",
   "license": "ISC",
