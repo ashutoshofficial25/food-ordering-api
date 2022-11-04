@@ -25,9 +25,10 @@ const userSchema = new mongoose.Schema(
 );
 
 //pre-save is a trigger that gets a function and execute it before user object :
-userSchema.pre("save", async (next) => {
-  const user = this;
-  const hash = await bcrypt.hash(this.password, 12);
+userSchema.pre("save", async function encryptPassword(next) {
+  console.log(this);
+  const salt = await bcrypt.genSalt(10);
+  const hash = await bcrypt.hash(this.password, salt);
   this.password = hash;
   next();
 });

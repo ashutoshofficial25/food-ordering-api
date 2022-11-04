@@ -17,7 +17,7 @@ app.listen(5000, async () => {
   await connect();
   console.log("Database connected successfully!");
 
-  // const user = User.create({
+  // const user = await User.create({
   //   email: "user1@email.com",
   //   password: "ashu1234",
   //   username: "ashutosh",
