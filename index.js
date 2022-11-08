@@ -7,8 +7,12 @@ const passport = require("passport");
 const apiRouter = require("./src/routes/index");
 const { User } = require("./src/models/userModel");
 const authRouter = require("./src/routes/authRoutes");
+const morgan = require("morgan");
 require("./src/utils/auth");
+
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(morgan("dev"));
 app.use("/", authRouter);
 app.use("/api", apiRouter);
 
